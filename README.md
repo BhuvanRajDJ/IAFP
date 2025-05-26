@@ -1,277 +1,246 @@
-#   IAFP - Intelligent Assignment Feedback Platform
+IAFP - Intelligent Assignment Feedback Platform
+Description
+This project is a full-stack web application built using the MERN stack (MongoDB, Express.js, React.js, Node.js) designed to provide intelligent assignment feedback. It offers a comprehensive platform where teachers can efficiently create, manage, and evaluate assignments, while students can easily submit their work and receive automated feedback powered by AI.
 
-##   Description
+Features
+User Authentication: Secure registration and login functionalities for both teacher and student roles.
 
-This project is a full-stack web application built using the MERN stack (MongoDB, Express.js, React.js, Node.js) to facilitate intelligent assignment feedback. It enables teachers to create and manage assignments, students to submit their work, and leverages AI for automated evaluation and feedback.
+Assignment Management:
 
-##   Features
+Teachers have full control to create, update, and delete assignments, specifying details such as title, subject, deadline, and individual questions.
 
-* User Authentication: Secure registration and login for both teachers and students.
-* Assignment Management:
-     * Teachers can create, update, and delete assignments with details like title, subject, deadline, and questions.
-     * Students can view available assignments based on their department and year.
-* Assignment Submission: Students can submit assignments by uploading files.
-* AI-Powered Evaluation:
-     * Integrates with the Gemini API to automatically evaluate student submissions.
-     * Provides feedback, marks, and plagiarism scores.
-* Feedback and Results:
-     * Teachers can view submitted assignments and AI-generated evaluations.
-     * Students can view their submission status and feedback.
-* Google Drive Integration: Utilizes Google Drive for file storage and retrieval.
-* Email Notifications: Sends email notifications to students upon assignment creation and updates.
+Students can conveniently view available assignments that are relevant to their specific department and academic year.
 
-##   Technologies Used
+Assignment Submission: Students can submit their completed assignments by uploading necessary files directly through the platform.
 
-* Frontend:
-     * React.js
-     * Vite
-     * HTML
-     * CSS
-     * JavaScript
-* Backend:
-     * Node.js
-     * Express.js
-* Database:
-     * MongoDB
-* AI Evaluation:
-     * Gemini API
-* File Storage:
-     * Google Drive API
-* Email Service:
-     * SendGrid API
-* Authentication:
-     * jsonwebtoken
-     * bcryptjs
-* Middleware:
-     * cors
-     * body-parser
-     * multer
+AI-Powered Evaluation:
 
-##   Project Structure
-It looks like you're asking how to create a README file for your project. A README file is essential for documenting your project and providing instructions to others (or your future self) on how to use it. Here's a breakdown of how to create one and what to include, tailored to your MERN stack project.
+The platform integrates with the Gemini API to provide automated evaluation of student submissions.
 
-1. Create the README File
+It generates detailed feedback, assigns marks, and calculates plagiarism scores for each submission.
 
-Using a Text Editor:
-Open your favorite text editor (VS Code, Sublime Text, Notepad++, etc.).
-Create a new file.
-Save it as README.md (the .md extension is important for Markdown formatting) in the root directory of your project (the main IAFP directory in your file structure).
-Using the Command Line:
-Navigate to your project's root directory in your terminal:
-Bash
+Feedback and Results:
 
-cd D:\Major Project\VVIET final one\IAFP
-Create the file using a command like:
-(Linux/macOS) touch README.md
-(Windows) type nul > README.md
-2.  Choose a Format (Markdown)
+Teachers can access a comprehensive view of all submitted assignments and their corresponding AI-generated evaluations.
 
-.md indicates that you'll be using Markdown. Markdown is a lightweight and easy-to-read formatting language. GitHub automatically renders Markdown files nicely.
-3.  Essential Sections and Content
+Students can track the status of their submissions and review the detailed feedback provided.
 
-Here's a template of what to include in your README.md, customized for your MERN stack project:
+Google Drive Integration: Utilizes the Google Drive API for secure and efficient storage and retrieval of assignment files.
 
-Markdown
+Email Notifications: Automated email notifications are sent to students upon the creation and subsequent updates of assignments.
 
-#   IAFP - Intelligent Assignment Feedback Platform
+Technologies Used
+Frontend:
 
-##   Description
+React.js
 
-This project is a full-stack web application built using the MERN stack (MongoDB, Express.js, React.js, Node.js) to facilitate intelligent assignment feedback. It enables teachers to create and manage assignments, students to submit their work, and leverages AI for automated evaluation and feedback.
+Vite
 
-##   Features
+HTML
 
-* User Authentication: Secure registration and login for both teachers and students.
-* Assignment Management:
-     * Teachers can create, update, and delete assignments with details like title, subject, deadline, and questions.
-     * Students can view available assignments based on their department and year.
-* Assignment Submission: Students can submit assignments by uploading files.
-* AI-Powered Evaluation:
-     * Integrates with the Gemini API to automatically evaluate student submissions.
-     * Provides feedback, marks, and plagiarism scores.
-* Feedback and Results:
-     * Teachers can view submitted assignments and AI-generated evaluations.
-     * Students can view their submission status and feedback.
-* Google Drive Integration: Utilizes Google Drive for file storage and retrieval.
-* Email Notifications: Sends email notifications to students upon assignment creation and updates.
+CSS
 
-##   Technologies Used
+JavaScript
 
-* Frontend:
-     * React.js
-     * Vite
-     * HTML
-     * CSS
-     * JavaScript
-* Backend:
-     * Node.js
-     * Express.js
-* Database:
-     * MongoDB
-* AI Evaluation:
-     * Gemini API
-* File Storage:
-     * Google Drive API
-* Email Service:
-     * SendGrid API
-* Authentication:
-     * jsonwebtoken
-     * bcryptjs
-* Middleware:
-     * cors
-     * body-parser
-     * multer
+Backend:
 
-##   Project Structure
+Node.js
 
+Express.js
+
+Database:
+
+MongoDB
+
+AI Evaluation:
+
+Gemini API
+
+File Storage:
+
+Google Drive API
+
+Email Service:
+
+SendGrid API
+
+Authentication:
+
+jsonwebtoken
+
+bcryptjs
+
+Middleware:
+
+cors
+
+body-parser
+
+multer
+
+Project Structure
 IAFP/
 ├── backEnd/
-│   ├── controllers/         # Handles application logic
-│   ├── models/              # Defines data schemas (MongoDB)
-│   ├── routes/              # Defines API endpoints
-│   ├── config/              # Configuration files (DB, Google AI, etc.)
-│   ├── uploads/             # (Temporary) storage for uploaded files
-│   ├── .env                 # Environment variables (API keys, DB connection) - (Add to .gitignore)
-│   ├── google-credentials.json # Google Cloud credentials - (Add to .gitignore, handle securely)
-│   ├── index.js             # Entry point for the backend application
-│   ├── package-lock.json
-│   └── package.json
+│   ├── controllers/         # Handles application logic and interacts with models/services
+│   ├── models/              # Defines Mongoose schemas for MongoDB data
+│   ├── routes/              # Defines API endpoints and links them to controller functions
+│   ├── config/              # Configuration files (e.g., database connection, Google AI setup)
+│   ├── uploads/             # (Temporary) directory for storing uploaded files before Google Drive transfer
+│   ├── .env                 # Environment variables (API keys, DB connection strings) - **(Add to .gitignore)**
+│   ├── google-credentials.json # Google Cloud service account credentials - **(Add to .gitignore, handle securely)**
+│   ├── index.js             # Main entry point for the backend Express application
+│   ├── package-lock.json    # Records the exact dependency tree
+│   └── package.json         # Lists backend dependencies and scripts
 │
 └── frontEnd/IAFP/
-│   ├── node_modules/
-│   ├── public/              # Static assets (index.html)
-│   ├── src/                 # React components and logic
-│   ├── .env                 # Environment variables (API keys) - (Add to .gitignore)
-│   ├── .eslintrc.cjs
-│   ├── index.html
-│   ├── package-lock.json
-│   ├── package.json
-|   └── vite.config.js
-└── README.md            # Project documentation (this file)
+    ├── node_modules/        # Installed frontend dependencies
+    ├── public/              # Static assets (e.g., `index.html`, favicon)
+    ├── src/                 # React components, styles, and application logic
+    ├── .env                 # Frontend environment variables - **(Add to .gitignore)**
+    ├── .eslintrc.cjs        # ESLint configuration for code linting
+    ├── index.html           # Main HTML file for the React application
+    ├── package-lock.json    # Records the exact frontend dependency tree
+    ├── package.json         # Lists frontend dependencies and scripts
+    ├── README.md            # Project documentation (this file)
+    └── vite.config.js       # Vite build configuration file
 
-##   Setup Instructions
+Setup Instructions
+To get the project up and running on your local machine, follow these steps:
 
-1.  Clone the Repository:
+Clone the Repository:
 
-     ```bash
-     git clone <your_repository_url>
-     cd IAFP
-     ```
+git clone <your_repository_url>
+cd IAFP
 
-2.  Backend Setup:
+Backend Setup:
 
-     * Navigate to the `backEnd` directory:
+Navigate to the backEnd directory:
 
-         ```bash
-         cd backEnd
-         ```
+cd backEnd
 
-     * Install dependencies:
+Install backend dependencies:
 
-         ```bash
-         npm install
-         ```
+npm install
 
-     * Create a `.env` file in the `backEnd` directory and add the following environment variables:
+Environment Variables: Create a .env file in the backEnd directory. This file should NOT be committed to Git. Add the following variables, replacing the placeholders with your actual values:
 
-         ```
-         PORT=3000                  # Or your desired port
-         Mongodb_Url=<YOUR_MONGODB_URI>  # MongoDB connection string
-         SENDGRID_API_KEY=<YOUR_SENDGRID_API_KEY>
-         BEARER_TOKEN=<YOUR_GEMINI_API_KEY>  # OpenAI API Key (check if still used)
-         SECRET_KEY=<YOUR_JWT_SECRET_KEY>  # Secret key for JWT
-         SECRET_NUMBER=<YOUR_TEACHER_SECRET_NUMBER> # Secret number for teacher registration
-         ```
+PORT=3000                  # Or your desired port for the backend server
+Mongodb_Url=<YOUR_MONGODB_URI>  # Your MongoDB connection string (e.g., from MongoDB Atlas or local)
+SENDGRID_API_KEY=<YOUR_SENDGRID_API_KEY> # API key obtained from SendGrid
+BEARER_TOKEN=<YOUR_GEMINI_API_KEY>  # Your API key for the Gemini API (or other AI service)
+SECRET_KEY=<YOUR_JWT_SECRET_KEY>  # A strong, random secret key for JWT signing
+SECRET_NUMBER=<YOUR_TEACHER_SECRET_NUMBER> # A secret number for teacher registration
 
-         Note: Replace the `<...>` placeholders with your actual values. DO NOT COMMIT THIS `.env` FILE!
+Google Cloud Credentials:
 
-     * Google Cloud Credentials:
-         * If using `google-credentials.json`, obtain the necessary credentials from your Google Cloud Console.
-         * Place the `google-credentials.json` file in the `backEnd` directory.
-         * Securely handle this file! Add it to `.gitignore` and transfer it securely to your server if needed.
-         * Consider using Google Cloud Secret Manager or environment variables for credentials instead of storing the file.
+If your Google Drive integration requires a google-credentials.json file, obtain it from your Google Cloud Console.
 
-     * Start the backend server:
+Place this google-credentials.json file in the backEnd directory.
 
-         ```bash
-         npm start
-         ```
+Crucially, ensure this file is added to your .gitignore to prevent accidental public exposure. For production, consider using Google Cloud Secret Manager or environment variables to inject these credentials securely.
 
-3.  Frontend Setup:
+Start the backend server:
 
-     * Navigate to the `frontEnd/IAFP` directory:
+npm start
 
-         ```bash
-         cd frontEnd/IAFP
-         ```
+Frontend Setup:
 
-     * Install dependencies:
+Navigate to the frontEnd/IAFP directory:
 
-         ```bash
-         npm install
-         ```
+cd ../frontEnd/IAFP
 
-     * Create a `.env` file in the `frontEnd/IAFP` directory if you have any frontend-specific environment variables:
+Install frontend dependencies:
 
-         ```
-         # Example (if needed)
-         VITE_API_BASE_URL=http://localhost:3000  # Backend API URL
-         ```
+npm install
 
-         Note: Prefix frontend environment variables with `VITE_` in React/Vite projects. DO NOT COMMIT THIS `.env` FILE!
+Environment Variables (Frontend): If your frontend needs access to environment variables (e.g., the backend API URL), create a .env file in the frontEnd/IAFP directory. This file should NOT be committed to Git. Remember to prefix variables with VITE_ for Vite projects:
 
-     * Start the frontend development server:
+VITE_API_BASE_URL=http://localhost:3000  # The URL where your backend server is running
 
-         ```bash
-         npm run dev
-         ```
+Start the frontend development server:
 
-4.  Database Setup:
+npm run dev
 
-     * Ensure you have MongoDB installed and running.
-     * Update the `Mongodb_Url` in the `backEnd/.env` file with your MongoDB connection string.
+Database Setup:
 
-##   Important Security Notes
+Ensure you have a MongoDB instance running (either locally or a cloud service like MongoDB Atlas).
 
-* `.env` Files: NEVER commit `.env` files containing sensitive information (API keys, database passwords, etc.) to your Git repository. Always add them to `.gitignore`.
-* `google-credentials.json`: Handle this file with extreme care. It grants access to your Google Cloud resources. Add it to `.gitignore`, transfer it securely if necessary, and restrict permissions on your server. Consider using alternative secure methods for handling credentials (e.g., Google Cloud Secret Manager).
-* Production Environment: For production deployments, use environment variables set directly on your server or hosting platform instead of `.env` files.
-* Input Validation and Sanitization: Implement robust input validation and sanitization on both the frontend and backend to prevent security vulnerabilities like cross-site scripting (XSS) and SQL injection.
-* Authentication and Authorization: Use strong authentication and authorization mechanisms to protect your API endpoints and data.
-* Dependency Management: Keep your project dependencies up to date to avoid known security vulnerabilities. Use `npm audit` or `yarn audit` to check for vulnerabilities.
+Verify that the Mongodb_Url in your backEnd/.env file is correctly configured to connect to your MongoDB database.
 
-##   API Endpoints
+Important Security Notes
+.env Files: NEVER commit .env files containing sensitive information (API keys, database passwords, etc.) to your Git repository. Always ensure they are listed in your .gitignore files.
 
-_(Provide a list of your API endpoints with their methods, routes, and descriptions. Refer to your `routes` directory for details.)_
+google-credentials.json: This file grants access to your Google Cloud resources. Treat it with extreme caution. It must be in .gitignore. For production deployments, transfer it securely to your server and set restrictive file permissions (e.g., chmod 400). A more robust solution is to use Google Cloud Secret Manager or environment variables for these credentials.
 
-Example:
+Production Environment: For deploying to a production environment, always use environment variables set directly on your hosting platform or server, rather than relying on .env files.
 
+Input Validation and Sanitization: Implement robust input validation on both the frontend and backend to prevent common web vulnerabilities such as Cross-Site Scripting (XSS) and SQL Injection.
+
+Authentication and Authorization: Ensure strong authentication and authorization mechanisms are in place to protect your API endpoints and sensitive data.
+
+Dependency Management: Regularly update your project dependencies to mitigate known security vulnerabilities. Utilize tools like npm audit or yarn audit to scan for and address security issues.
+
+HTTPS: Always use HTTPS for all communication in production to encrypt data in transit.
+
+API Endpoints
+Here's a comprehensive list of the API endpoints available in this application:
 
 User Authentication and Management (userRouter.js)
 
-* `POST /signup` - Registers a new student.
-* `POST /teachersignup` - Registers a new teacher.
-* `POST /student_login` - Authenticates a student and returns a JWT.
-* `POST /teacher_login` - Authenticates a teacher and returns a JWT.
-* `GET /students-by-department` - (Requires authentication) Fetches students within the teacher's department.
+POST /signup - Registers a new student.
+
+POST /teachersignup - Registers a new teacher.
+
+POST /student_login - Authenticates a student and returns a JWT.
+
+POST /teacher_login - Authenticates a teacher and returns a JWT.
+
+GET /students-by-department - (Requires authentication) Fetches students within the teacher's department.
 
 Assignment Management (assignmentRouter.js)
 
-* `POST /teacher/assignment` - (Requires authentication) Creates a new assignment.
-* `GET /teacher/assignment` - (Requires authentication) Fetches assignments created by the logged-in teacher.
-* `PUT /teacher/assignment/:id` - (Requires authentication) Updates an assignment with the given ID.
-* `DELETE /teacher/assignment/:id` - (Requires authentication) Deletes an assignment with the given ID.
-* `POST /submitAssignment` - (Requires authentication, file upload) Allows a student to submit an assignment. Expects a file in the request field named "file".
-* `GET /submittedAssignments` - (Requires authentication) Fetches all submitted assignments.
-* `GET /studentSubmittedAssignments` - (Requires authentication) Fetches assignments submitted by a specific student.
-* `DELETE /delete-submission/:submissionId/:questionId` - (Requires authentication) Deletes a student's submission for a specific question within an assignment.
-* `GET /student-evaluations` - (Requires authentication) Fetches evaluations for the logged-in student.
-* `GET /fetchAllstudent-evaluations` - (Requires authentication) Fetches all student evaluations (for teachers).
-* `GET /fetchAssignment_Student` - (Requires authentication) Fetches assignments for students based on their department and year.
-* `POST /assignmentSubmitionStatus` - (Requires authentication) Updates the submission status of an assignment.
+POST /teacher/assignment - (Requires authentication) Creates a new assignment.
+
+GET /teacher/assignment - (Requires authentication) Fetches assignments created by the logged-in teacher.
+
+PUT /teacher/assignment/:id - (Requires authentication) Updates an assignment with the given ID.
+
+DELETE /teacher/assignment/:id - (Requires authentication) Deletes an assignment with the given ID.
+
+POST /submitAssignment - (Requires authentication, file upload) Allows a student to submit an assignment. Expects a file in the request field named "file".
+
+GET /submittedAssignments - (Requires authentication) Fetches all submitted assignments.
+
+GET /studentSubmittedAssignments - (Requires authentication) Fetches assignments submitted by a specific student.
+
+DELETE /delete-submission/:submissionId/:questionId - (Requires authentication) Deletes a student's submission for a specific question within an assignment.
+
+GET /student-evaluations - (Requires authentication) Fetches evaluations for the logged-in student.
+
+GET /fetchAllstudent-evaluations - (Requires authentication) Fetches all student evaluations (for teachers).
+
+GET /fetchAssignment_Student - (Requires authentication) Fetches assignments for students based on their department and year.
+
+POST /assignmentSubmitionStatus - (Requires authentication) Updates the submission status of an assignment.
 
 File Uploads (uploadRoutes.js)
 
-* `POST /api/upload` - (Requires authentication, file upload) Handles file uploads. Expects a file in the request field named "assignment".
+POST /api/upload - (Requires authentication, file upload) Handles file uploads. Expects a file in the request field named "assignment".
 
+Contributing
+We welcome contributions to the IAFP project! If you'd like to contribute, please follow these steps:
 
+Fork the repository.
+
+Create a new branch for your feature or bug fix.
+
+Make your changes and ensure tests pass.
+
+Commit your changes with clear, concise messages.
+
+Push your branch to your fork.
+
+Open a pull request to the main repository, describing your changes in detail.
+
+License
+This project is licensed under the MIT License.
