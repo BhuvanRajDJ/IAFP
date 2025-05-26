@@ -176,12 +176,6 @@ Ensure MongoDB is running locally or on the cloud. Confirm `Mongodb_Url` is vali
 ### File Uploads
 - `POST /api/upload`
 
-## Contributing
-
-1. Fork the repo
-2. Create a feature branch
-3. Write and test code
-4. Submit a PR
 
 ## License
 MIT License
