@@ -1,0 +1,397 @@
+/* StudentAssignment.css - Royal Navy Blue Theme */
+
+/* Global styles */
+:root {
+  --navy-dark: #0a1d3b;
+  --navy-primary: #14365d;
+  --navy-light: #235590;
+  --navy-accent: #3a6ea5;
+  --gold: #c6a455;
+  --gold-light: #e5d0a0;
+  --white: #ffffff;
+  --light-gray: #f0f3f8;
+  --text-dark: #111827;
+  --text-light: #e5e7eb;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Page Layout */
+.studentAssignmentSubmissiom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  color: var(--navy-dark);
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to right, var(--navy-primary), var(--gold), var(--navy-primary));
+}
+
+/* Assignment Card */
+.studentAssigmentCard {
+  background-color: var(--white);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-soft);
+  border-left: 5px solid var(--gold);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.studentAssigmentCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Details/Summary */
+details {
+  width: 100%;
+}
+
+summary {
+  padding: 1.25rem;
+  cursor: pointer;
+  background-color: var(--light-gray);
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: "\f0d7";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  color: var(--navy-primary);
+  transition: transform 0.3s ease;
+}
+
+details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+details[open] summary {
+  border-bottom: 2px solid var(--navy-light);
+}
+
+details[open] {
+  background-color: var(--white);
+}
+
+/* Typography in summary */
+summary h4 {
+  color: var(--navy-primary);
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+summary h5 {
+  color: var(--navy-dark);
+  font-size: 1.25rem;
+  margin: 0.25rem 0;
+  font-weight: 700;
+}
+
+summary p {
+  color: var(--text-dark);
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+/* Questions Section */
+details h3 {
+  color: var(--navy-primary);
+  font-size: 1.5rem;
+  margin: 1.5rem 0 1rem 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+details h3::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background-color: var(--navy-primary);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}
+
+.question-list {
+  padding: 0 1.5rem 1.5rem;
+}
+
+/* Question Item */
+.question-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--light-gray);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--navy-accent);
+}
+
+.question-number {
+  background-color: var(--navy-primary);
+  color: var(--white);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.question-text {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+.question-marks {
+  color: var(--navy-primary);
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: var(--gold-light);
+  padding: 0.3rem 0.75rem;
+  border-radius: 16px;
+  margin-left: 1rem;
+}
+
+/* File Upload Section */
+.file-upload-section {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: rgba(240, 243, 248, 0.5);
+  border-radius: 6px;
+  border: 1px dashed var(--navy-light);
+}
+
+.file-input-container {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.file-input-container input[type="file"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--navy-light);
+  border-radius: 4px;
+  background-color: var(--white);
+  color: var(--text-dark);
+}
+
+.file-input-container input[type="file"]:hover {
+  border-color: var(--navy-accent);
+}
+
+.file-upload-section button {
+  padding: 0.6rem 1.2rem;
+  margin-left: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-upload-section button:not(.cancel) {
+  background-color: var(--navy-primary);
+  color: var(--white);
+}
+
+.file-upload-section button:not(.cancel):hover {
+  background-color: var(--navy-dark);
+  transform: translateY(-2px);
+}
+
+.file-upload-section button:not(.cancel):disabled {
+  background-color: #7f8ea3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.file-upload-section button.cancel {
+  background-color: transparent;
+  border: 1px solid #d1d5db;
+  color: #6b7280;
+}
+
+.file-upload-section button.cancel:hover {
+  background-color: #f3f4f6;
+}
+
+.file-upload-section button.cancel:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Feedback Section */
+.feedback-section {
+  margin: 0 0 1.5rem 1rem;
+  padding: 1rem;
+  background-color: var(--light-gray);
+  border-radius: 6px;
+  border-left: 4px solid var(--gold);
+}
+
+.feedback-section strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--navy-primary);
+  font-size: 1.1rem;
+}
+
+.feedback-item {
+  background-color: var(--white);
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.feedback-item p {
+  margin: 0.5rem 0;
+  color: var(--text-dark);
+}
+
+/* Total Marks */
+.total-marks {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 1.5rem;
+  border-top: 2px dashed var(--navy-light);
+  margin-top: 1rem;
+}
+
+.total-marks h3 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  color: var(--navy-dark);
+}
+
+/* Submit Assignment Button */
+.submit-assignment {
+  display: block;
+  width: calc(100% - 3rem);
+  margin: 0 1.5rem 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--navy-primary), var(--navy-dark));
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-assignment::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.submit-assignment:hover::before {
+  left: 100%;
+}
+
+.submit-assignment:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, var(--navy-dark), var(--navy-primary));
+}
+
+.submit-assignment:disabled {
+  background: #7f8ea3;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .studentAssignmentSubmissiom {
+    padding: 1rem;
+  }
+  
+  .file-upload-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .file-input-container {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .file-upload-section button {
+    margin: 0.5rem 0 0;
+    width: 100%;
+  }
+  
+  .question-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .question-number {
+    margin-bottom: 0.5rem;
+  }
+  
+  .question-marks {
+    margin: 0.5rem 0 0;
+  }
+  
+  .submit-assignment {
+    width: calc(100% - 2rem);
+    margin: 0 1rem 1rem;
+  }
+}

@@ -1,0 +1,240 @@
+/* Main Color Palette */
+:root {
+    --primary: #1a56db;
+    --primary-light: #3b82f6;
+    --primary-dark: #1e40af;
+    --secondary: #dbb704;
+    --background: #f7f9fc;
+    --card-bg: #ffffff;
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --border-color: #e2e8f0;
+    --success: #0e9f6e;
+    --danger: #e53e3e;
+    --warning: #ff9800;
+  }
+  
+  /* Global Styles */
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+  }
+  
+  /* Container Styles */
+  .p-4 {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  
+  /* Headings */
+  h1.text-2xl {
+    color: var(--primary-dark);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  
+  h2.text-xl {
+    color: var(--secondary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  h3.text-lg {
+    color: var(--primary);
+    font-weight: 600;
+  }
+  
+  h4.font-medium {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  
+  /* Table Styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    border-radius: 0.375rem;
+    overflow: hidden;
+  }
+  
+  thead {
+    background-color: var(--primary);
+  }
+  
+  th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    color: rgb(7, 52, 165);
+    border-bottom: 2px solid var(--primary-dark);
+  }
+  
+  td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+  }
+  
+  tr:nth-child(even) {
+    background-color: rgba(240, 245, 255, 0.5);
+  }
+  
+  tr:hover {
+    background-color: rgba(219, 234, 254, 0.7);
+  }
+  
+  .border {
+    border: none;
+  }
+  
+  /* Status Colors */
+  .text-green-600 {
+    color: var(--success);
+    font-weight: 500;
+  }
+  
+  .text-red-600 {
+    color: var(--danger);
+    font-weight: 500;
+  }
+  
+  /* Group Selection Buttons */
+  .flex.flex-wrap.gap-2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    border: none;
+    outline: none;
+  }
+  
+  button.bg-blue-100 {
+    background-color: #e1effe;
+    color: var(--primary);
+    border: 1px solid #c3ddfd;
+  }
+  
+  button.bg-blue-100:hover {
+    background-color: #bfdbfe;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  button.bg-blue-600 {
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 1px 3px rgba(26, 86, 219, 0.5);
+  }
+  
+  button.bg-blue-600:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  /* Assignment Card Styles */
+  .mb-6.bg-white.p-4.rounded.shadow {
+    background-color: var(--card-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .mb-6.bg-white.p-4.rounded.shadow:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Student Submission Box */
+  .mb-4.p-3.border.border-gray-200.rounded {
+    background-color: #f9fafb;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Links */
+  a.text-blue-600 {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  a.text-blue-600:hover {
+    text-decoration: underline;
+    color: var(--primary-dark);
+  }
+  
+  /* Loading & Error States */
+  div.p-4.text-red-500 {
+    background-color: #fee2e2;
+    border-left: 4px solid var(--danger);
+    padding: 1rem;
+    color: #b91c1c;
+    border-radius: 0.25rem;
+  }
+  
+  div.p-4:contains("Loading data...") {
+    background-color: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .overflow-x-auto {
+      overflow-x: auto;
+    }
+    
+    table {
+      font-size: 0.875rem;
+    }
+    
+    th, td {
+      padding: 0.5rem 0.75rem;
+    }
+    
+    .flex.flex-wrap.gap-2 {
+      flex-direction: column;
+    }
+    
+    button {
+      width: 100%;
+    }
+  }
+  
+  /* Print-friendly styles */
+  @media print {
+    body {
+      background-color: white;
+    }
+    
+    .mb-6.bg-white.p-4.rounded.shadow {
+      box-shadow: none;
+      border: 1px solid #ddd;
+      break-inside: avoid;
+    }
+    
+    button {
+      display: none;
+    }
+  }

@@ -1,0 +1,196 @@
+/* SignupStudent.css - Black and Blue Theme */
+
+/* Main Container Styles */
+.signUpContainer {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: #121212;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 255, 0.2);
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    border: 1px solid #1e3a8a;
+  }
+  
+  /* Heading Styles */
+  .signUpContainer h2 {
+    text-align: center;
+    color: #3b82f6;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 0.75rem;
+  }
+  
+  /* Form Styles */
+  .signUpContainer form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  /* Input Fields */
+  .signUpContainer input,
+  .signUpContainer select {
+    padding: 0.9rem;
+    background-color: #1e1e1e;
+    border: 1px solid #2563eb;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .signUpContainer input::placeholder {
+    color: #9ca3af;
+  }
+  
+  .signUpContainer input:focus,
+  .signUpContainer select:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+    background-color: #2d2d2d;
+  }
+  
+  /* Select Field Specific Styles */
+  .signUpContainer select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+  
+  .signUpContainer select option {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+  
+  /* Button Styles */
+  .signUpContainer button {
+    background-color: #2563eb;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .signUpContainer button:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.5);
+  }
+  
+  .signUpContainer button:active {
+    transform: translateY(0);
+  }
+  
+  /* Error Message */
+  .signUpContainer p[style*="color:red"] {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #f87171 !important;
+    padding: 0.75rem;
+    border-radius: 5px;
+    border-left: 4px solid #ef4444;
+    margin-bottom: 1rem;
+  }
+  
+  /* Links Section */
+  .signUpContainer a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    display: inline-block;
+    margin: 0.3rem 0;
+  }
+  
+  .signUpContainer a:hover {
+    color: #93c5fd;
+    text-decoration: underline;
+  }
+  
+  /* Navigation Links Container - Add this div to your code */
+  .nav-links {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #2563eb;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  /* Department Select Styling */
+  #departments {
+    color: #ffffff;
+  }
+  
+  /* Date Input Styling */
+  input[type="Date"] {
+    color-scheme: dark;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .signUpContainer {
+      padding: 1.5rem;
+      margin: 1rem;
+      width: 90%;
+    }
+    
+    .signUpContainer h2 {
+      font-size: 1.5rem;
+    }
+    
+    .signUpContainer input,
+    .signUpContainer select,
+    .signUpContainer button {
+      padding: 0.75rem;
+    }
+  }
+  
+  /* Number Input Arrows Styling */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  
+  /* Animation for Form Elements */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .signUpContainer input,
+  .signUpContainer select,
+  .signUpContainer button {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .signUpContainer input:nth-child(2) { animation-delay: 0.1s; }
+  .signUpContainer input:nth-child(3) { animation-delay: 0.2s; }
+  .signUpContainer input:nth-child(4) { animation-delay: 0.3s; }
+  .signUpContainer input:nth-child(5) { animation-delay: 0.4s; }
+  .signUpContainer input:nth-child(6) { animation-delay: 0.5s; }
+  .signUpContainer input:nth-child(7) { animation-delay: 0.6s; }
+  .signUpContainer input:nth-child(8) { animation-delay: 0.7s; }
+  .signUpContainer select:nth-child(9) { animation-delay: 0.8s; }
+  .signUpContainer select:nth-child(10) { animation-delay: 0.9s; }
+  .signUpContainer button { animation-delay: 1s; }
