@@ -94,7 +94,7 @@ IAFP/
 
 ### 1. Clone the Repository
 ```bash
-git clone <your_repository_url>
+git clone https://github.com/BhuvanRajDJ/IAFP.git
 cd IAFP
 ```
 
