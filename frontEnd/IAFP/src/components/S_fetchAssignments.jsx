@@ -9,23 +9,33 @@ function S_fetchAssignments() {
   const [files, setFiles] = useState({});
   const [submittingAssignment, setSubmittingAssignment] = useState(false);
   const [uploading, setUploading] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   
   const fetchAssignment = async () => {
     try{
+      setLoading(true);
       const response = await fetchAssignments();
-      setAssignment(response.assignments);
+      // Add null check and ensure it's an array
+      setAssignment(response?.assignments || []);
     }catch(error){
-      console.log(`Could not fetch the data. error:${error}`)
+      console.log(`Could not fetch the data. error:${error}`);
+      setError("Failed to fetch assignments");
+      setAssignment([]);
+    } finally {
+      setLoading(false);
     }
   }
 
   const fetchFeedbackStudent = async () => {
     try{
       const response = await fetchFeedback();
-      const data = response.evaluations;
-      setFeedback(data);
+      // Add null check and ensure it's an array
+      const data = response?.evaluations || [];
+      setFeedback(Array.isArray(data) ? data : []);
     }catch(error){
-      console.log(`Could not fetch the data. error: ${error}`)
+      console.log(`Could not fetch the data. error: ${error}`);
+      setFeedback([]); // Set empty array on error
     }
   }
 
@@ -93,12 +103,11 @@ function S_fetchAssignments() {
         [questionId]: false
       }));
     }
-};
+  };
 
   const handleSubmitAssignment = async (assignmentId) => {
     setSubmittingAssignment(true);
     try {
-        // Option 1: Using JSON (recommended)
         const assignmentData = {
             assignmentId: assignmentId,
             isCompleted: true
@@ -121,95 +130,112 @@ function S_fetchAssignments() {
     }
   };
 
+  // Show loading state
+  if (loading) {
+    return <div>Loading assignments...</div>;
+  }
+
+  // Show error state
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <>
       <h1>Assignments</h1>
       <div className='studentAssignmentSubmissiom'>
-        {assignment.map((item, index) => (
-          <div key={item._id} className='studentAssigmentCard'>
-            <details>
-              <summary>
-                <h4>SL NO: {index+1}</h4>
-                <h5>Title: {item.title}</h5>
-                <h5>Subject: {item.subject}</h5>
-                <p>Description: {item.description}</p>
-                <p>Created Time: {item.createdAt.split("T")[0]}</p>
-                <p>Deadline: {item.deadline.split("T")[0]}</p>
-              </summary>
-              
-              <h3>Questions</h3>
-              <div className="question-list">
-                {item.questions.map((qt, index) => {
-                  const fileInputRef = React.createRef();
-                  const questionFeedback = feedback.flatMap((fb) =>
-                    fb.marksPerQuestion.filter((obj) => obj.questionId === qt._id)
-                  );
+        {assignment.length === 0 ? (
+          <p>No assignments found.</p>
+        ) : (
+          assignment.map((item, index) => (
+            <div key={item._id} className='studentAssigmentCard'>
+              <details>
+                <summary>
+                  <h4>SL NO: {index+1}</h4>
+                  <h5>Title: {item.title}</h5>
+                  <h5>Subject: {item.subject}</h5>
+                  <p>Description: {item.description}</p>
+                  <p>Created Time: {item.createdAt?.split("T")[0] || 'N/A'}</p>
+                  <p>Deadline: {item.deadline?.split("T")[0] || 'N/A'}</p>
+                </summary>
+                
+                <h3>Questions</h3>
+                <div className="question-list">
+                  {(item.questions || []).map((qt, questionIndex) => {
+                    const fileInputRef = React.createRef();
+                    // Add safe array check for feedback
+                    const questionFeedback = Array.isArray(feedback) 
+                      ? feedback.flatMap((fb) =>
+                          (fb.marksPerQuestion || []).filter((obj) => obj.questionId === qt._id)
+                        )
+                      : [];
 
-                  return (
-                    <div key={qt._id}>
-                      <div className="question-item">
-                        <div className="question-number">{index+1}</div>
-                        <div className="question-text">{qt.questionText}</div>
-                        <div className="question-marks">{qt.marks} pts</div>
-                      </div>
-                      
-                      <div className="file-upload-section">
-                        <div className="file-input-container">
-                          <input 
-                            ref={fileInputRef} 
-                            type='file' 
-                            onChange={(e) => handleFileChange(qt._id, e.target.files[0])}  
-                          />
+                    return (
+                      <div key={qt._id}>
+                        <div className="question-item">
+                          <div className="question-number">{questionIndex+1}</div>
+                          <div className="question-text">{qt.questionText}</div>
+                          <div className="question-marks">{qt.marks} pts</div>
                         </div>
-                        <button 
-                          className="cancel" 
-                          onClick={() => {
-                            cancelUpload(qt._id);
-                            if (fileInputRef.current) fileInputRef.current.value = "";
-                          }}
-                          disabled={uploading[qt._id]}
-                        >
-                          Cancel
-                        </button>
-                        <button 
-                          onClick={() => handleUpload(item._id, qt._id)}
-                          disabled={uploading[qt._id] || !files[qt._id]}
-                        >
-                          {uploading[qt._id] ? "Uploading..." : "Upload"}
-                        </button>
-                      </div>
-                      
-                      {questionFeedback.length > 0 && (
-                        <div className="feedback-section">
-                          <strong>Feedback:</strong>
-                          {questionFeedback.map((fb, idx) => (
-                            <div key={idx} className="feedback-item">
-                              <p>Marks: {fb.marksAwarded}</p>
-                              <p>Comment: {fb.comments}</p>
-                              <p>Comment1: {fb.feedback}</p>
-                            </div>
-                          ))}
+                        
+                        <div className="file-upload-section">
+                          <div className="file-input-container">
+                            <input 
+                              ref={fileInputRef} 
+                              type='file' 
+                              onChange={(e) => handleFileChange(qt._id, e.target.files[0])}  
+                            />
+                          </div>
+                          <button 
+                            className="cancel" 
+                            onClick={() => {
+                              cancelUpload(qt._id);
+                              if (fileInputRef.current) fileInputRef.current.value = "";
+                            }}
+                            disabled={uploading[qt._id]}
+                          >
+                            Cancel
+                          </button>
+                          <button 
+                            onClick={() => handleUpload(item._id, qt._id)}
+                            disabled={uploading[qt._id] || !files[qt._id]}
+                          >
+                            {uploading[qt._id] ? "Uploading..." : "Upload"}
+                          </button>
                         </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-              
-              <div className="total-marks">
-                <h3>Total Marks:</h3>
-              </div>
-              
-              <button 
-                className="submit-assignment"
-                onClick={() => handleSubmitAssignment(item._id)}
-                disabled={submittingAssignment}
-              >
-                {submittingAssignment ? "Submitting..." : "Submit Assignment"}
-              </button>
-            </details>
-          </div>
-        ))}
+                        
+                        {questionFeedback.length > 0 && (
+                          <div className="feedback-section">
+                            <strong>Feedback:</strong>
+                            {questionFeedback.map((fb, idx) => (
+                              <div key={idx} className="feedback-item">
+                                <p>Marks: {fb.marksAwarded || 'N/A'}</p>
+                                <p>Comment: {fb.comments || 'No comments'}</p>
+                                <p>Feedback: {fb.feedback || 'No feedback'}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+                
+                <div className="total-marks">
+                  <h3>Total Marks:</h3>
+                </div>
+                
+                <button 
+                  className="submit-assignment"
+                  onClick={() => handleSubmitAssignment(item._id)}
+                  disabled={submittingAssignment}
+                >
+                  {submittingAssignment ? "Submitting..." : "Submit Assignment"}
+                </button>
+              </details>
+            </div>
+          ))
+        )}
       </div>
     </>
   )
