@@ -13,7 +13,7 @@ const assignmentRouter = require("./routes/assignmentRouter");
 const uploadRoutes = require("./routes/uploadRoutes");
 const path = require("path");
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 
 const app = express();
