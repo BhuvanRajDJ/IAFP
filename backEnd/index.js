@@ -8,7 +8,7 @@ const OpenAI = require("openai").default;
 require("./models/db");
 const userRouter = require("./routes/userRouter");
 const assignmentRouter = require("./routes/assignmentRouter");
-const cors = require("cors");
+
 
 const uploadRoutes = require("./routes/uploadRoutes");
 const path = require("path");
@@ -21,11 +21,7 @@ app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: "https://iafp.onrender.com",
-  })
-);
+
 
 app.use("/", userRouter);
 app.use("/", assignmentRouter);
