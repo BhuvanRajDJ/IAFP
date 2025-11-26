@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Assignment Submission</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+
+    .glassmorphism {
+      background: rgba(255, 255, 255, 0.05);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#1337ec",
+            "background-light": "#f6f6f8",
+            "background-dark": "#101322",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark text-white overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-transparent p-4 pb-2 justify-between sticky top-0 z-10 bg-background-dark/80 backdrop-blur-sm">
+<div class="flex w-12 items-center justify-start">
+<button class="flex items-center justify-center rounded-lg h-12 w-12 bg-transparent text-white">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+</div>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] text-center flex-1 truncate">Algebra II: Chapter 5</h1>
+<div class="flex w-12 items-center justify-end">
+<button class="flex items-center justify-center rounded-lg h-12 w-12 bg-transparent text-white">
+<span class="material-symbols-outlined text-2xl">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Assignment Details -->
+<div class="px-4 py-2">
+<div class="glassmorphism p-4 rounded-xl">
+<p class="text-gray-300 text-base font-normal leading-normal pb-3 pt-1">
+          Complete all problems from Chapter 5, showing your work for each step. Ensure your handwriting is clear and legible for accurate AI analysis.
+        </p>
+<p class="text-gray-400 text-sm font-normal leading-normal">Due: October 26, 2024, 11:59 PM</p>
+</div>
+</div>
+<!-- Empty State Uploader -->
+<div class="flex flex-col p-4 flex-grow">
+<div class="flex flex-col items-center justify-center gap-6 rounded-xl border-2 border-dashed border-[#323b67] px-6 py-14 flex-grow">
+<div class="flex flex-col items-center gap-4 text-center">
+<span class="material-symbols-outlined text-5xl text-primary">upload_file</span>
+<p class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Tap to upload Handwritten PDFs/Images</p>
+<p class="text-gray-400 text-sm font-normal leading-normal">Supports PDF, JPG, PNG</p>
+</div>
+</div>
+</div>
+<!-- File Preview Card (Example of state after upload - commented out for initial view) -->
+<!--
+    <div class="flex flex-col p-4 flex-grow">
+      <div class="flex flex-col items-center justify-center gap-6 rounded-xl border-2 border-primary/50 bg-primary/10 px-6 py-10 flex-grow">
+        <div class="flex flex-col items-center gap-4 w-full">
+            <div class="w-24 h-32 bg-gray-700 rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-6xl text-white/50">description</span>
+            </div>
+            <p class="text-white text-base font-medium leading-tight tracking-[-0.015em] mt-2">Homework_Scan_01.pdf</p>
+            <p class="text-gray-400 text-sm font-normal leading-normal">4.2 MB</p>
+            <button class="flex items-center justify-center gap-2 mt-4 h-10 px-4 rounded-lg bg-white/10 text-white text-sm font-bold leading-normal tracking-[0.015em]">
+                <span class="material-symbols-outlined text-lg">close</span>
+                <span>Remove File</span>
+            </button>
+        </div>
+      </div>
+    </div>
+    -->
+<!-- Bottom Action Button -->
+<div class="sticky bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background-dark to-transparent">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 flex-1 bg-gradient-to-r from-[#8A2BE2] to-[#4F46E5] text-white text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-[#6A3DE2]/30 disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+<span class="truncate">Submit for AI Analysis</span>
+</button>
+</div>
+</div>
+</body></html>

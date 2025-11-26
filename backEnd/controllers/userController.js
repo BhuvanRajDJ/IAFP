@@ -317,7 +317,7 @@ const signinTeacher = async (req, res) => {
       },
       SECRET_KEY,
       {
-        expiresIn: "8h",
+        expiresIn: "30D",
       }
     );
     

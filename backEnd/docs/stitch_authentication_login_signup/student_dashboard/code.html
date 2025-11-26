@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1337ec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101322",
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
+<!-- Main Content -->
+<main class="flex-1 pb-24">
+<!-- Top App Bar -->
+<div class="flex flex-col gap-2 p-4 pb-2">
+<div class="flex h-12 items-center justify-between">
+<div class="flex size-12 shrink-0 items-center">
+<div class="aspect-square size-10 rounded-full bg-cover bg-center bg-no-repeat" data-alt="User profile picture of Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCuVNOEHARELMoobJqlCkBOzHFq9vsn_POCjluQSHYvnUHtwci3KeFAPxQudPnSv3rYY1Ke4KAAmDa9mpVHKjPBl99kmGUPTJVKtI5MAXzfPEcy3dMPHKd21KLEyzHUEzRQsiEXCf4RJoeH-_cBODMhrejQezGJ-FTo5Q9Y-WzGsqSaVoKEFg8oR0GbXArNPULmd3zLqseniSMIUtZFiFGlUxrukce8Bmz1VY9sZzdPaGIjTbhFpnDeBWkvE2mPejx4gV-Att0rr6sv");'></div>
+</div>
+<button class="flex items-center justify-center rounded-full size-10 text-white/80 dark:text-white/80 hover:bg-white/10">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+</div>
+<h1 class="text-slate-900 dark:text-white text-[28px] font-bold leading-tight tracking-tight">Welcome back, Sarah!</h1>
+</div>
+<!-- Body Text / Quote -->
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-normal pb-3 pt-1 px-4">"The beautiful thing about learning is that nobody can take it away from you." — B.B. King</p>
+<!-- Stats Cards with Glassmorphism -->
+<div class="flex flex-nowrap gap-4 p-4 overflow-x-auto snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<div class="flex min-w-[158px] flex-1 snap-start flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+<p class="text-slate-300 dark:text-slate-300 text-sm font-medium leading-normal">Assignments Pending</p>
+<p class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">3</p>
+</div>
+<div class="flex min-w-[158px] flex-1 snap-start flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+<p class="text-slate-300 dark:text-slate-300 text-sm font-medium leading-normal">Average Grade</p>
+<p class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">88%</p>
+</div>
+<div class="flex min-w-[158px] flex-1 snap-start flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+<p class="text-slate-300 dark:text-slate-300 text-sm font-medium leading-normal">Completed</p>
+<p class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">12</p>
+</div>
+</div>
+<!-- Section Header -->
+<h2 class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Active Assignments</h2>
+<!-- Assignment List -->
+<div class="flex flex-col gap-3 px-4">
+<!-- List Item 1: Pending -->
+<div class="flex flex-col gap-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-4">
+<div class="flex items-start gap-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300">
+<span class="material-symbols-outlined">science</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-slate-800 dark:text-white text-base font-medium leading-normal">Quantum Physics Essay</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Due: Oct 26, 2024</p>
+</div>
+<div class="shrink-0">
+<div class="flex items-center justify-center rounded-full bg-orange-500/20 px-2.5 py-1">
+<p class="text-orange-500 text-xs font-medium">Pending</p>
+</div>
+</div>
+</div>
+<button class="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-3 text-sm font-bold text-white shadow-lg transition-transform duration-200 ease-in-out hover:scale-[1.02]">
+<span class="material-symbols-outlined text-lg">upload_file</span>
+                        Upload Assignment
+                    </button>
+</div>
+<!-- List Item 2: Graded -->
+<div class="flex flex-col gap-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-4">
+<div class="flex items-start gap-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300">
+<span class="material-symbols-outlined">history_edu</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-slate-800 dark:text-white text-base font-medium leading-normal">Renaissance Art Analysis</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Graded: Oct 20, 2024</p>
+</div>
+<div class="shrink-0">
+<div class="flex items-center justify-center rounded-full bg-green-500/20 px-2.5 py-1">
+<p class="text-green-500 text-xs font-medium">Graded</p>
+</div>
+</div>
+</div>
+<button class="flex w-full items-center justify-center gap-2 rounded-lg bg-slate-200 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-800 dark:text-white transition-colors hover:bg-slate-300 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-lg">visibility</span>
+                        View Feedback
+                    </button>
+</div>
+<!-- List Item 3: Submitted -->
+<div class="flex flex-col gap-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-4">
+<div class="flex items-start gap-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300">
+<span class="material-symbols-outlined">calculate</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-slate-800 dark:text-white text-base font-medium leading-normal">Calculus Problem Set 5</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Submitted: Oct 22, 2024</p>
+</div>
+<div class="shrink-0">
+<div class="flex items-center justify-center rounded-full bg-blue-500/20 px-2.5 py-1">
+<p class="text-blue-500 text-xs font-medium">Submitted</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 border-t border-white/10 bg-slate-900/50 p-2 backdrop-blur-lg">
+<div class="flex justify-around">
+<a class="flex flex-col items-center gap-1 p-2 rounded-lg text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-xs font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 rounded-lg text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="text-xs font-medium">Assignments</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 rounded-lg text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Profile</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

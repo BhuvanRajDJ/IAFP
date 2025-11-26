@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Feedback Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+            line-height: 1; /* Aligns icons better */
+        }
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.05);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#4F46E5",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101322",
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<!-- TopAppBar -->
+<div class="sticky top-0 z-10 flex items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm p-4 pb-2 justify-between border-b border-white/10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-white">arrow_back</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Feedback Report</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-white">more_vert</span>
+</button>
+</div>
+</div>
+<!-- BodyText: Assignment Name -->
+<p class="text-[#9CA3AF] text-base font-normal leading-normal px-4 pt-4">Quantum Physics Homework 3</p>
+<!-- Main Content Grid -->
+<div class="flex flex-col md:flex-row w-full grow gap-4 p-4">
+<!-- Left Column: Document Viewer -->
+<div class="flex flex-col md:w-1/2 w-full gap-4">
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Your Submission</h3>
+<div class="flex w-full grow aspect-[2/3] rounded-xl overflow-hidden border border-white/10">
+<div class="w-full bg-center bg-no-repeat bg-cover flex-1" data-alt="A handwritten page of a student's physics assignment with equations and diagrams" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBbj5un97VfmRiaBOeaSC1xXmUSNzWjof9A-mFFuXQloVgKW2dphdo3pCauooy2mzJbPQc8I56ly0dLOrZcvnaaoC5sGHKGmQpI4kYb7YQ2JdgIG5QvCN79Q46WzD6iDG-Ok5DjiUjTCEPfodaxiQxTV1Nzru3O_POXEABJASqzwDSNL89MsbvWZLKE_TyOe3RCxFtwVeEPleppKovevh__2NPfo-9vyANH7x-HCINlV57hKi5mbLS4scbSWZaybslSS1lbFkzaAxWa");'></div>
+</div>
+</div>
+<!-- Right Column: AI Report -->
+<div class="flex flex-col md:w-1/2 w-full gap-4">
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">AI Report</h3>
+<!-- Overall Score -->
+<div class="rounded-xl p-6 glass-panel">
+<p class="text-white/80 text-base font-medium leading-normal mb-4">Overall Score</p>
+<div class="relative flex items-center justify-center w-40 h-40 mx-auto">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<circle class="text-white/10" cx="60" cy="60" fill="transparent" r="52" stroke="currentColor" stroke-width="10"></circle>
+<circle class="text-primary" cx="60" cy="60" fill="transparent" r="52" stroke="url(#scoreGradient)" stroke-dasharray="326.7" stroke-dashoffset="65.34" stroke-linecap="round" stroke-width="10"></circle>
+<defs>
+<lineargradient id="scoreGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#8A2BE2"></stop>
+<stop offset="100%" stop-color="#4F46E5"></stop>
+</lineargradient>
+</defs>
+</svg>
+<span class="absolute text-4xl font-bold text-white">80%</span>
+</div>
+</div>
+<!-- Strengths -->
+<div class="rounded-xl p-6 glass-panel">
+<h4 class="text-white/80 text-base font-medium leading-normal mb-4">Strengths</h4>
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-2 bg-[#10B981]/20 text-[#10B981] text-sm font-medium px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-base">check_circle</span>
+<span>Clear Handwriting</span>
+</div>
+<div class="flex items-center gap-2 bg-[#10B981]/20 text-[#10B981] text-sm font-medium px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-base">check_circle</span>
+<span>Strong Argument</span>
+</div>
+<div class="flex items-center gap-2 bg-[#10B981]/20 text-[#10B981] text-sm font-medium px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-base">check_circle</span>
+<span>Correct Formulas</span>
+</div>
+</div>
+</div>
+<!-- Areas for Improvement -->
+<div class="rounded-xl p-6 glass-panel">
+<h4 class="text-white/80 text-base font-medium leading-normal mb-4">Areas for Improvement</h4>
+<ul class="space-y-3">
+<li class="flex items-start gap-3 text-[#F59E0B]">
+<span class="material-symbols-outlined text-xl mt-0.5">lightbulb</span>
+<span class="flex-1">Cite sources for external references.</span>
+</li>
+<li class="flex items-start gap-3 text-[#F59E0B]">
+<span class="material-symbols-outlined text-xl mt-0.5">lightbulb</span>
+<span class="flex-1">Expand on the conclusion for Question 3 to summarize findings.</span>
+</li>
+</ul>
+</div>
+<!-- Question-by-Question Analysis -->
+<div class="rounded-xl p-6 glass-panel">
+<h4 class="text-white/80 text-base font-medium leading-normal mb-1">Question-by-Question Analysis</h4>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-sm text-[#9CA3AF]">verified_user</span>
+<p class="text-xs text-[#9CA3AF]">Teacher reviewed AI feedback.</p>
+</div>
+<div class="flex flex-col divide-y divide-white/10">
+<!-- Accordion Item 1 -->
+<details class="group py-3">
+<summary class="flex cursor-pointer items-center justify-between list-none">
+<span class="text-white font-medium">Question 1</span>
+<span class="material-symbols-outlined text-white transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<p class="text-[#9CA3AF] mt-3 text-sm">Excellent work defining the key terms. The explanation of wave-particle duality was clear and concise. Score: 10/10.</p>
+</details>
+<!-- Accordion Item 2 -->
+<details class="group py-3">
+<summary class="flex cursor-pointer items-center justify-between list-none">
+<span class="text-white font-medium">Question 2</span>
+<span class="material-symbols-outlined text-white transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<p class="text-[#9CA3AF] mt-3 text-sm">The calculation was mostly correct, but there was a minor arithmetic error in the final step. Review your multiplication. Score: 8/10.</p>
+</details>
+<!-- Accordion Item 3 -->
+<details class="group py-3">
+<summary class="flex cursor-pointer items-center justify-between list-none">
+<span class="text-white font-medium">Question 3</span>
+<span class="material-symbols-outlined text-white transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<p class="text-[#9CA3AF] mt-3 text-sm">The core concept is understood, but the explanation could be stronger. Adding a concluding sentence to summarize your findings would improve the answer. Score: 6/10.</p>
+</details>
+</div>
+</div>
+</div>
+</div>
+<div class="h-5 bg-background-light dark:bg-background-dark"></div>
+</div>
+</body></html>

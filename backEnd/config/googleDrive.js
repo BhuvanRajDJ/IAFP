@@ -5,13 +5,13 @@ require("dotenv").config();
 
 
 // Load the OAuth credentials
-const credentials = require("../google-credentials.json");
+const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+const REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN;
+const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI || "https://developers.google.com/oauthplayground";
 
-// Authenticate with Google OAuth2
-const auth = new google.auth.GoogleAuth({
-    credentials,
-    scopes: ["https://www.googleapis.com/auth/drive"], // ✅ Updated Scope
-});
+const auth = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+auth.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 const drive = google.drive({ version: "v3", auth });
 
@@ -25,7 +25,7 @@ const uploadFile = async (filePath, fileName, mimeType) => {
 
         const fileMetadata = {
             name: fileName,
-            parents: ["1CRM-i3bFCE3Gf9ufccRVk0zdudKTy_Vl"], // Folder ID
+            parents: [process.env.GOOGLE_DRIVE_FOLDER_ID], 
         };
 
         const media = {

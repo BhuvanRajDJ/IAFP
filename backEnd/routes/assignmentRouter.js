@@ -13,6 +13,11 @@ const {
   assignmentSubmitionStatus,
   fetchAssignment_Student
 } = require("../controllers/assignmentController");
+const {
+  updateEvaluation,
+  togglePublishEvaluation,
+  bulkPublishEvaluations
+} = require("../controllers/evaluationController");
 const { authenticationToken } = require("../controllers/userController");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
@@ -42,12 +47,17 @@ router.get(
 
 router.delete("/delete-submission/:submissionId/:questionId", authenticationToken, deleteSubmittedAssignment);
 
-router.get("/student-evaluations", authenticationToken,getStudentevaluations);
+router.get("/student-evaluations", authenticationToken, getStudentevaluations);
 
-router.get("/fetchAllstudent-evaluations", authenticationToken,getEvaluationsForTeacher);
+router.get("/fetchAllstudent-evaluations", authenticationToken, getEvaluationsForTeacher);
 
-router.get("/fetchAssignment_Student", authenticationToken,fetchAssignment_Student);
+router.get("/fetchAssignment_Student", authenticationToken, fetchAssignment_Student);
 
 router.post("/assignmentSubmitionStatus", authenticationToken, assignmentSubmitionStatus);
+
+// New evaluation management routes
+router.put("/teacher/evaluation/:evaluationId", authenticationToken, updateEvaluation);
+router.put("/teacher/evaluation/:evaluationId/publish", authenticationToken, togglePublishEvaluation);
+router.post("/teacher/evaluations/bulk-publish", authenticationToken, bulkPublishEvaluations);
 
 module.exports = router;

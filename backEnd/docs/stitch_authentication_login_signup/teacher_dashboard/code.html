@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teacher Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#4F46E5",
+              "background-light": "#f6f6f8",
+              "background-dark": "#121212",
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col text-[#EAEAEA]">
+<!-- Top App Bar -->
+<div class="flex flex-col gap-2 p-4 pb-2">
+<div class="flex h-12 items-center justify-between">
+<div class="flex size-12 shrink-0 items-center">
+<div class="aspect-square size-10 rounded-full bg-cover bg-center bg-no-repeat" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAhrfhWmhDlZ9VgwnA2TTAWZwEadcDNu3uq7zSEmD0oBq50wPusw86w--V1DJ6zl-xAfgRnQSuJHPGwRosqPhKLPTceBLB4TNawAuMdb7qzRAQ_HASO-GIiwGPnCyIKZiFVJi_RhaT_pV-C5m1__gkT5JvemZ5fPoKeatf_vAXwyrbP0hgqizrgWTuTMD3g_BxRhLtlmz0cEVWkDfvsmvnggPajH6Q-voR1Eh1Lkh48zdjO5NUFWC_O_dVyCn4_TocMo48IhSwjmmJG");'></div>
+</div>
+<div class="flex w-12 items-center justify-end">
+<button class="flex h-12 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-transparent p-0 text-base font-bold leading-normal tracking-[0.015em] text-white">
+<span class="material-symbols-outlined text-[#EAEAEA]">notifications</span>
+</button>
+</div>
+</div>
+<p class="text-[28px] font-bold leading-tight tracking-[-0.015em] text-white">Welcome, Sarah!</p>
+</div>
+<!-- Overview Stats -->
+<div class="flex flex-wrap gap-3 p-4">
+<div class="glass-card flex min-w-0 flex-1 flex-col gap-2 rounded-xl p-4">
+<p class="text-sm font-medium leading-normal text-[#A0A0A0]">Total Students</p>
+<p class="text-2xl font-bold leading-tight text-white">128</p>
+</div>
+<div class="glass-card flex min-w-0 flex-1 flex-col gap-2 rounded-xl p-4">
+<p class="text-sm font-medium leading-normal text-[#A0A0A0]">Assignments Active</p>
+<p class="text-2xl font-bold leading-tight text-white">5</p>
+</div>
+<div class="glass-card flex min-w-0 flex-1 flex-col gap-2 rounded-xl p-4 border border-[#4F46E5]/50">
+<p class="text-sm font-medium leading-normal text-[#A0A0A0]">Grading Pending</p>
+<p class="text-2xl font-bold leading-tight text-white">12</p>
+</div>
+</div>
+<!-- Section Header: Quick Actions -->
+<h2 class="px-4 pb-3 pt-5 text-[22px] font-bold leading-tight tracking-[-0.015em] text-white">Quick Actions</h2>
+<!-- Text Grid: Quick Actions Cards -->
+<div class="grid grid-cols-1 gap-4 p-4 pt-0">
+<div class="glass-card flex flex-1 cursor-pointer flex-col gap-3 rounded-xl p-4">
+<span class="material-symbols-outlined text-3xl" style="background: linear-gradient(to right, #8A2BE2, #4F46E5); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">add_circle</span>
+<div class="flex flex-col gap-1">
+<h2 class="text-base font-bold leading-tight text-white">Create New Assignment</h2>
+<p class="text-sm font-normal leading-normal text-[#A0A0A0]">Start a new assignment for your class.</p>
+</div>
+</div>
+<div class="glass-card flex flex-1 cursor-pointer flex-col gap-3 rounded-xl p-4">
+<span class="material-symbols-outlined text-3xl" style="background: linear-gradient(to right, #8A2BE2, #4F46E5); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">rate_review</span>
+<div class="flex flex-col gap-1">
+<h2 class="text-base font-bold leading-tight text-white">Review Submissions</h2>
+<p class="text-sm font-normal leading-normal text-[#A0A0A0]">View AI-graded assignments.</p>
+</div>
+</div>
+</div>
+<!-- Section Header: Recent Activity -->
+<h2 class="px-4 pb-3 pt-5 text-[22px] font-bold leading-tight tracking-[-0.015em] text-white">Recent Activity</h2>
+<!-- Recent Activity Feed -->
+<div class="flex flex-col gap-3 px-4 pb-8">
+<div class="flex items-center gap-4 rounded-lg p-2">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#EAEAEA]/10">
+<span class="material-symbols-outlined text-white">description</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-white">Alex Johnson submitted <span class="font-bold">Calculus HW 3</span></p>
+<p class="text-xs text-[#A0A0A0]">5 minutes ago</p>
+</div>
+</div>
+<div class="flex items-center gap-4 rounded-lg p-2">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#EAEAEA]/10">
+<span class="material-symbols-outlined text-white">description</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-white">Maria Garcia submitted <span class="font-bold">History Essay</span></p>
+<p class="text-xs text-[#A0A0A0]">1 hour ago</p>
+</div>
+</div>
+<div class="flex items-center gap-4 rounded-lg p-2">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#EAEAEA]/10">
+<span class="material-symbols-outlined text-white">description</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-white">Chen Wei submitted <span class="font-bold">Calculus HW 3</span></p>
+<p class="text-xs text-[#A0A0A0]">3 hours ago</p>
+</div>
+</div>
+<div class="flex items-center gap-4 rounded-lg p-2">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#EAEAEA]/10">
+<span class="material-symbols-outlined text-white">description</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-white">Priya Patel submitted <span class="font-bold">Chemistry Lab Report</span></p>
+<p class="text-xs text-[#A0A0A0]">Yesterday</p>
+</div>
+</div>
+</div>
+</div>
+</body></html>
