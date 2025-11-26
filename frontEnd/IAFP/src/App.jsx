@@ -16,35 +16,31 @@ import CreateAssignment from './components/CreateAssignment';
 import A_fetchAssignments from './components/A_fetchAssignments';
 import S_fetchAssignments from './components/S_fetchAssignments'
 import StudentAssignmentTracker from './components/StudentAssignmentTracker';
+import Layout from './components/Layout';
 
 function App() {
   return (
-   <>
-   <Toaster position="top-right" />
-   < ToastContainer position="top-right" />
-<Router>
-  <Routes>
-  <Route path="/teacher_Home" element={           <TeacherHome />   
-        } />
+    <>
+      <Toaster position="top-right" />
+      < ToastContainer position="top-right" />
+      <Router>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<SignupStudent />} />
+          <Route path="/student_Login" element={<SigninStudent />} />
+          <Route path="/teacher_signup" element={<SignupTeacher />} />
+          <Route path="/teacher_LogIn" element={<SignInTeacher />} />
 
-
-
-    <Route path="/" element={<SignupStudent />} />
-    <Route path="/student_Login" element={<SigninStudent />} />
-    <Route path="/Home" element={<StudentHomePage/>} />
-    <Route path="/teacher_signup" element={<SignupTeacher/>}/>
-    <Route path="/teacher_LogIn" element={<SignInTeacher />}/>
- 
-    <Route path="/createAssignment" element={<CreateAssignment />} />
-
-    <Route path="/manage-assignments" element={<A_fetchAssignments/>} />
-   <Route path="/studentAssignment" element={<S_fetchAssignments />} />
-   <Route path="/student-tracker" element={<StudentAssignmentTracker />} />
-
-   
-  </Routes>
-</Router>
-   </>
+          {/* Protected Routes */}
+          <Route path="/Home" element={<Layout><StudentHomePage /></Layout>} />
+          <Route path="/teacher_Home" element={<Layout><TeacherHome /></Layout>} />
+          <Route path="/createAssignment" element={<Layout><CreateAssignment /></Layout>} />
+          <Route path="/manage-assignments" element={<Layout><A_fetchAssignments /></Layout>} />
+          <Route path="/studentAssignment" element={<Layout><S_fetchAssignments /></Layout>} />
+          <Route path="/student-tracker" element={<Layout><StudentAssignmentTracker /></Layout>} />
+        </Routes>
+      </Router>
+    </>
   )
 }
 

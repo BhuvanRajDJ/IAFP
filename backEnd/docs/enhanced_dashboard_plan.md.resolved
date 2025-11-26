@@ -1,0 +1,137 @@
+# Enhanced Dashboard Features - Implementation Plan
+
+## User Requirements
+
+### Teacher Dashboard
+1. **Department View**: Show list of departments
+2. **Batch View**: Inside each department, show available batches
+3. **Assignment Columns**: Inside each batch, display:
+   - Completed Assignments (deadline over)
+   - Pending Assignments (deadline not over)
+4. **Student Submissions**: View submitted answers
+5. **Submission Stats**: Show number of students who attempted each assignment
+
+### Student Dashboard
+1. **Assignment Filtering**: See assignments based on department and batch
+2. **Assignment History**: View all answered assignments
+3. **Dashboard Metrics**:
+   - Pending assignments count
+   - Available assignments count
+   - Average grade
+   - Total subjects
+
+## Current Backend APIs Analysis
+
+### Available APIs
+- [fetchAssignment()](file:///c:/Users/bhuva/IAFP/backEnd/controllers/assignmentController.js#31-52) - Teacher token - Gets all assignments created by teacher
+- [fetchAssignments()](file:///c:/Users/bhuva/IAFP/frontEnd/IAFP/src/services/Api.jsx#225-243) - Student token - Gets assignments for student's department/batch
+- [students_by_department()](file:///c:/Users/bhuva/IAFP/frontEnd/IAFP/src/services/Api.jsx#95-113) - Teacher token - Gets students grouped by department
+- [submittedAssignments()](file:///c:/Users/bhuva/IAFP/frontEnd/IAFP/src/services/Api.jsx#114-132) - Teacher token - Gets all submissions
+- [fetchFeedback()](file:///c:/Users/bhuva/IAFP/frontEnd/IAFP/src/services/Api.jsx#264-281) - Student token - Gets student's evaluations
+
+### Required New APIs
+1. **Teacher-side**:
+   - Get departments with batch counts
+   - Get assignments with submission counts
+   - Get student submissions for specific assignment
+
+2. **Student-side**:
+   - Get student statistics (avg grade, pending count, etc.)
+   - Get assignment history with grades
+
+## Implementation Approach
+
+### Phase 1: Backend API Verification/Creation
+- [ ] Check if current APIs provide needed data
+- [ ] Create new endpoints if needed:
+  - `/teacher/dashboard-stats` - Department/batch/assignment overview
+  - `/student/dashboard-stats` - Student performance metrics
+  - `/teacher/assignment/:id/submissions` - Detailed submission data
+
+### Phase 2: Frontend Components
+
+#### Teacher Dashboard Components
+- [ ] Create `DepartmentList` component
+- [ ] Create `BatchView` component  
+- [ ] Create `AssignmentColumns` component (completed/pending)
+- [ ] Create `SubmissionViewer` component
+- [ ] Redesign [TeacherHome.jsx](file:///c:/Users/bhuva/IAFP/frontEnd/IAFP/src/components/TeacherHome.jsx) with new layout
+
+#### Student Dashboard Components
+- [ ] Create `DashboardStats` component (cards for metrics)
+- [ ] Create `AssignmentHistory` component
+- [ ] Redesign [StudentHomePage.jsx](file:///c:/Users/bhuva/IAFP/frontEnd/IAFP/src/components/StudentHomePage.jsx) with metrics
+- [ ] Update [S_fetchAssignments.jsx](file:///c:/Users/bhuva/IAFP/frontEnd/IAFP/src/components/S_fetchAssignments.jsx) if needed
+
+### Phase 3: Data Integration
+- [ ] Connect Teacher dashboard to APIs
+- [ ] Connect Student dashboard to APIs
+- [ ] Add loading states and error handling
+- [ ] Test with real data
+
+### Phase 4: Verification
+- [ ] Test teacher view with multiple departments/batches
+- [ ] Test student view with actual grades
+- [ ] Verify all metrics are calculating correctly
+- [ ] Check responsive design
+
+## Technical Decisions
+
+### Data Structure
+```typescript
+// Teacher Dashboard Data
+{
+  departments: [
+    {
+      name: "CSE",
+      batches: [
+        {
+          year: "2025",
+          students: 30,
+          assignments: {
+            completed: [...],
+            pending: [...]
+          }
+        }
+      ]
+    }
+  ]
+}
+
+// Student Dashboard Data
+{
+  stats: {
+    pendingCount: 5,
+    availableCount: 8,
+    averageGrade: 85.5,
+    totalSubjects: 6
+  },
+  history: [
+    {
+      assignment: {...},
+      grade: 90,
+      submittedAt: "2025-11-20"
+    }
+  ]
+}
+```
+
+### UI Layout
+
+**Teacher Dashboard**:
+- Accordion/expandable sections for departments
+- Tabs for batches within department
+- Two-column grid for completed vs pending assignments
+- Modal for viewing student submissions
+
+**Student Dashboard**:
+- Top row: 4 metric cards (pending, available, avg grade, total subjects)
+- Main section: Available assignments list
+- Secondary section: Assignment history table
+
+## Next Steps
+1. Verify backend data availability
+2. Create detailed task breakdown
+3. Begin with Teacher dashboard implementation
+4. Follow with Student dashboard
+5. Integration testing

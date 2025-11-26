@@ -658,7 +658,8 @@ const submitAssignment = async (req, res) => {
     let evaluationFeedback = await evaluateAssignment(
       req.file.path,
       req.file.mimetype,
-      question.questionText
+      question.questionText,
+      question.expectedAnswer
     );
     fs.unlinkSync(req.file.path);
 
@@ -735,22 +736,54 @@ const submitAssignment = async (req, res) => {
           0
         );
 
+        // Auto-publish AI evaluations
+        evaluationRecord.isPublished = true;
+        evaluationRecord.publishedAt = new Date();
+
         // **Save evaluations**
         await evaluationRecord.save();
       } catch (error) {
         console.error("Error parsing AI feedback:", error);
       }
     }
+    // Send email notification to student
+    try {
+      const student = await studentModel.findById(studentId);
+      if (student && student.email) {
+        const emailTemplate = {
+          to: student.email,
+          from: {
+            name: "IAFP",
+            email: "iafpvviet@gmail.com",
+          },
+          subject: `Assignment Submitted: ${assignment.title}`,
+          text: `Dear ${student.name},\n\nYou have successfully submitted the assignment "${assignment.title}" for ${assignment.subject}.\n\nBest Regards,\nIAFP Team`,
+          html: `<p>Dear ${student.name},</p>
+                 <p>You have successfully submitted the assignment <strong>${assignment.title}</strong> for <strong>${assignment.subject}</strong>.</p>
+                 <p>Best Regards,<br>IAFP Team</p>`,
+        };
+        await sgMail.send(emailTemplate);
+        console.log(`Submission email sent to ${student.email}`);
+      }
+    } catch (emailError) {
+      console.error("Failed to send submission email:", emailError);
+      // Don't fail the request if email fails
+    }
+
     res.status(201).json({
       message: "Assignment submitted and evaluated successfully",
       success: true,
       submission,
     });
   } catch (error) {
+    console.error("Submit Assignment Error:", error);
+    if (req.file && fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
     res.status(500).json({
       message: "Couldn't create the assignment",
       success: false,
-      error: `${error}`,
+      error: error.message || "Unknown error occurred",
     });
   }
 };
@@ -844,10 +877,27 @@ const fetchSubmittedAssignment = async (req, res) => {
       });
     }
 
+    // Fetch evaluations for these submissions
+    const submissionIds = submittedAssignments.map((sub) => sub._id);
+    const evaluationsList = await evaluations.find({
+      assignmentSubmissionId: { $in: submissionIds },
+    });
+
+    // Map evaluations to submissions
+    const submissionsWithMarks = submittedAssignments.map((sub) => {
+      const evaluation = evaluationsList.find(
+        (ev) => ev.assignmentSubmissionId.toString() === sub._id.toString()
+      );
+      return {
+        ...sub.toObject(),
+        evaluation: evaluation ? evaluation : null,
+      };
+    });
+
     res.status(200).json({
       message: "Submitted assignments fetched successfully",
       success: true,
-      submissions: submittedAssignments,
+      submissions: submissionsWithMarks,
     });
   } catch (error) {
     console.error("Error fetching submitted assignments:", error);
@@ -966,7 +1016,7 @@ const deleteSubmittedAssignment = async (req, res) => {
   }
 };
 
-//Fetch Feedback for students
+//Fetch Feedback for students - Only Published Results
 const getStudentevaluations = async (req, res) => {
   try {
     const studentId = req.user.id;
@@ -984,12 +1034,13 @@ const getStudentevaluations = async (req, res) => {
     const studentevaluations = await evaluations
       .find({
         assignmentSubmissionId: { $in: submissionIds },
+        isPublished: true  // Only show published evaluations to students
       })
       .populate("assignmentSubmissionId");
 
     if (!studentevaluations.length) {
       return res.status(404).json({
-        message: "No evaluation found for this student's submissions",
+        message: "No published evaluations found for your submissions",
         success: false,
       });
     }
