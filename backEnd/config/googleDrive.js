@@ -25,7 +25,7 @@ const uploadFile = async (filePath, fileName, mimeType) => {
 
         const fileMetadata = {
             name: fileName,
-            parents: [process.env.GOOGLE_DRIVE_FOLDER_ID], 
+            parents: [process.env.GOOGLE_DRIVE_FOLDER_ID],
         };
 
         const media = {

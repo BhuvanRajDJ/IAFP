@@ -1,10 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const fs = require("fs");
 require("dotenv").config();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const multer = require("multer");
-const OpenAI = require("openai").default;
+
 require("./models/db");
 const userRouter = require("./routes/userRouter");
 const assignmentRouter = require("./routes/assignmentRouter");
@@ -28,9 +29,10 @@ app.use("/", assignmentRouter);
 app.use("/api", uploadRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-const openai = new OpenAI({
-  apiKey: process.env.BEARER_TOKEN,
-});
+const uploadDir = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
 app.listen(PORT, () => {
   console.log(`The server is running at http://localhost:${PORT}`);
