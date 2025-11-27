@@ -70,3 +70,28 @@ npm run start:prod
 - Detailed error handling for SendGrid ensures graceful degradation if email sending fails.
 
 Feel free to adjust the static server configuration (nginx, Apache, etc.) to match your deployment environment.
+
+## Cloud Deployment (Example: Render)
+
+If you want to deploy to a cloud provider like **Render**, follow these steps:
+
+1.  **Push your code to GitHub**.
+2.  **Create a new Web Service** on Render.
+3.  **Connect your GitHub repository**.
+4.  **Configure the service**:
+    -   **Root Directory**: `backEnd`
+    -   **Build Command**: `npm install`
+    -   **Start Command**: `node index.js`
+5.  **Environment Variables**:
+    You MUST add the environment variables from your `.env` file to the Render dashboard (under the "Environment" tab).
+    -   `Mongodb_Url`
+    -   `SENDGRID_API_KEY`
+    -   `GEMINI_API_KEY`
+    -   `GOOGLE_CLIENT_ID`
+    -   `GOOGLE_CLIENT_SECRET`
+    -   `GOOGLE_REFRESH_TOKEN`
+    -   `GOOGLE_REDIRECT_URI` (Set this to your production URL + `/oauth2callback` if needed, or keep as is if just for backend logic)
+    -   `GOOGLE_DRIVE_FOLDER_ID`
+    -   `BEARER_TOKEN` (OpenAI)
+
+    *Note: You do NOT need to upload `google-credentials.json` because your code is configured to use these environment variables instead.*
