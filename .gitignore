@@ -44,3 +44,9 @@ coverage/
 *.tgz
 *.bak
 *.old
+node_modules/
+dist/
+.vscode/
+.idea/
+*.log
+.DS_Store
